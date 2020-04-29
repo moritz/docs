@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`0.5.1`, `0.5`, `0`, `latest`](https://github.com/tianon/docker-brew-cirros/blob/0f4ac5ae1e2b7bbff60b81b554f7578be1caec3b/arches/amd64/Dockerfile)
+-	[`0.5.1`, `0.5`, `0`, `latest`](https://github.com/tianon/docker-brew-cirros/blob/0f4ac5ae1e2b7bbff60b81b554f7578be1caec3b/arches/arm32v5/Dockerfile)
+
+[![arm32v5/cirros build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/cirros.svg?label=arm32v5/cirros%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/cirros/)
 
 # Quick reference
 
