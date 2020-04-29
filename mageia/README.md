@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7`, `latest`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/718477bf0e9298cf8ed9f08c5229713356e4728d/dist/7/x86_64/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/mageia build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/mageia.svg?label=mips64le/mageia%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/mageia/)
 
 # Quick reference
 
@@ -64,7 +66,7 @@ To date, Mageia:
 ## Create a Dockerfile for your container
 
 ```dockerfile
-FROM mageia:6
+FROM mips64le/mageia:6
 MAINTAINER  "Foo Bar" <foo@bar.com>
 CMD [ "bash" ]
 ```

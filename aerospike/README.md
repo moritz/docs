@@ -16,9 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`4.7.0.13`](https://github.com/aerospike/aerospike-server.docker/blob/3b57827b1541a0469598231fd491d43f860f0a2a/Dockerfile)
--	[`4.8.0.9`](https://github.com/aerospike/aerospike-server.docker/blob/b30a98d9b80357fd50ac3fa254a7f11ca1ebbb67/Dockerfile)
--	[`4.9.0.5`, `latest`](https://github.com/aerospike/aerospike-server.docker/blob/05d3d39c6ed93f3b01f756634333d23625276eb1/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/aerospike build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/aerospike.svg?label=mips64le/aerospike%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/aerospike/)
 
 # Quick reference
 
@@ -58,7 +58,7 @@ Documentation for Aerospike is available at [http://aerospike.com/docs](https://
 The following will run `asd` with all the exposed ports forwarded to the host machine.
 
 ```console
-$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 mips64le/aerospike
 ```
 
 **NOTE** Although this is the simplest method to getting Aerospike up and running, but it is not the preferred method. To properly run the container, please specify a **custom configuration** with the **access-address** defined.
@@ -69,7 +69,7 @@ By default, `asd` will use the configuration file at `/etc/aerospike/aerospike.c
 
 	-v <DIRECTORY>:/opt/aerospike/etc
 
-Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `aerospike`:
+Where `<DIRECTORY>` is the path to a directory containing your custom aerospike.conf file. Next, you will want to tell `asd` to use the configuration file that was just mounted by using the `--config-file` option for `mips64le/aerospike`:
 
 	--config-file /opt/aerospike/etc/aerospike.conf
 
@@ -78,7 +78,7 @@ This will tell `asd` to use the config file at `/opt/aerospike/etc/aerospike.con
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/etc --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 mips64le/aerospike asd --foreground --config-file /opt/aerospike/etc/aerospike.conf
 ```
 
 ### access-address Configuration
@@ -106,7 +106,7 @@ Where `<DIRECTORY>` is the path to a directory containing your data files.
 A full example:
 
 ```console
-$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 aerospike
+$ docker run -d -v <DIRECTORY>:/opt/aerospike/data --name aerospike -p 3000:3000 -p 3001:3001 -p 3002:3002 -p 3003:3003 mips64le/aerospike
 ```
 
 ## Clustering

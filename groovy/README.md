@@ -16,12 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.0.2-jdk8`, `3.0-jdk8`, `3.0.2-jdk`, `3.0-jdk`, `jdk8`, `jdk`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jdk8/Dockerfile)
--	[`3.0.2-jre8`, `3.0-jre8`, `3.0.2-jre`, `3.0-jre`, `3.0.2`, `3.0`, `jre8`, `jre`, `latest`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jre8/Dockerfile)
--	[`3.0.2-jdk11`, `3.0-jdk11`, `jdk11`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jdk11/Dockerfile)
--	[`3.0.2-jre11`, `3.0-jre11`, `jre11`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jre11/Dockerfile)
--	[`3.0.2-jdk14`, `3.0-jdk14`, `jdk14`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jdk14/Dockerfile)
--	[`3.0.2-jre14`, `3.0-jre14`, `jre14`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jre14/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/groovy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/groovy.svg?label=mips64le/groovy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/groovy/)
 
 # Quick reference
 
@@ -64,7 +61,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts mips64le/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -72,7 +69,7 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes mips64le/groovy
 ```
 
 # License

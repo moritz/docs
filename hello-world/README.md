@@ -20,16 +20,14 @@ WARNING:
 
 ## Simple Tags
 
--	[`linux`](https://github.com/docker-library/hello-world/blob/7ecae6978055d2fb6960e2a29d24a2af612e2716/amd64/hello-world/Dockerfile)
--	[`nanoserver-1809`](https://github.com/docker-library/hello-world/blob/9c93e37114a7fe99b5fc0d776e0b8dff99cbbb75/amd64/hello-world/nanoserver-1809/Dockerfile)
+-	[`linux`](https://github.com/docker-library/hello-world/blob/1b6581761dbcc3925f73a87214ec2c8cba06aec6/mips64le/hello-world/Dockerfile)
 
 ## Shared Tags
 
 -	`latest`:
-	-	[`linux`](https://github.com/docker-library/hello-world/blob/7ecae6978055d2fb6960e2a29d24a2af612e2716/amd64/hello-world/Dockerfile)
-	-	[`nanoserver-1809`](https://github.com/docker-library/hello-world/blob/9c93e37114a7fe99b5fc0d776e0b8dff99cbbb75/amd64/hello-world/nanoserver-1809/Dockerfile)
--	`nanoserver`:
-	-	[`nanoserver-1809`](https://github.com/docker-library/hello-world/blob/9c93e37114a7fe99b5fc0d776e0b8dff99cbbb75/amd64/hello-world/nanoserver-1809/Dockerfile)
+	-	[`linux`](https://github.com/docker-library/hello-world/blob/1b6581761dbcc3925f73a87214ec2c8cba06aec6/mips64le/hello-world/Dockerfile)
+
+[![mips64le/hello-world build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/hello-world.svg?label=mips64le/hello-world%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/hello-world/)
 
 # Quick reference
 
@@ -59,7 +57,7 @@ WARNING:
 # Example output
 
 ```console
-$ docker run hello-world
+$ docker run mips64le/hello-world
 
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
@@ -83,7 +81,7 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
 
-$ docker images hello-world
+$ docker images mips64le/hello-world
 REPOSITORY   TAG     IMAGE ID      SIZE
 hello-world  latest  bf756fb1ae65  13336
 ```

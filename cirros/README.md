@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`0.5.1`, `0.5`, `0`, `latest`](https://github.com/tianon/docker-brew-cirros/blob/0f4ac5ae1e2b7bbff60b81b554f7578be1caec3b/arches/amd64/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `mips64le` ARCHITECTURE
+
+[![mips64le/cirros build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/cirros.svg?label=mips64le/cirros%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/mips64le/job/cirros/)
 
 # Quick reference
 
