@@ -20,6 +20,8 @@ WARNING:
 -	[`4.0.12`, `4.0`](https://github.com/crate/docker-crate/blob/7791cda08fbf054ab2ce7a988f8811074b8c3bf4/Dockerfile)
 -	[`3.3.5`, `3.3`](https://github.com/crate/docker-crate/blob/f5c527fb12df004e3fc620fd9d91b97686f56ef8/Dockerfile)
 
+[![amd64/crate build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/crate.svg?label=amd64/crate%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/crate/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -67,7 +69,7 @@ The smallest CrateDB clusters can easily ingest tens of thousands of records per
 Spin up this Docker image like so:
 
 ```console
-$ docker run -p 4200:4200 crate
+$ docker run -p 4200:4200 amd64/crate
 ```
 
 Once you're up and running, head on over to [the introductory docs](https://crate.io/docs/crate/getting-started/en/latest/first-use/index.html).

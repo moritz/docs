@@ -24,6 +24,8 @@ WARNING:
 -	[`19.0.0.12-kernel-java8-ibmjava`](https://github.com/WASdev/ci.docker/blob/8571f13a63cd0767e2ba6af3fcd0001c0e636e59/ga/19.0.0.12/kernel/Dockerfile.ubuntu.ibmjava8)
 -	[`19.0.0.12-full-java8-ibmjava`](https://github.com/WASdev/ci.docker/blob/8571f13a63cd0767e2ba6af3fcd0001c0e636e59/ga/19.0.0.12/full/Dockerfile.ubuntu.ibmjava8)
 
+[![amd64/websphere-liberty build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/websphere-liberty.svg?label=amd64/websphere-liberty%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/websphere-liberty/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -103,7 +105,7 @@ There are multiple tags available in this repository. The image with the tag `be
 The `kernel` image contains just the Liberty kernel and no additional runtime features. This image is the recommended basis for custom built images, so that they can contain only the features required for a specific application. For example, the following Dockerfile starts with this image, copies in the `server.xml` that lists the features required by the application, and then uses the `configure.sh` script to download those features from the online repository.
 
 ```dockerfile
-FROM websphere-liberty:kernel
+FROM amd64/websphere-liberty:kernel
 COPY --chown=1001:0  Sample1.war /config/dropins/
 COPY --chown=1001:0  server.xml /config/
 RUN configure.sh
@@ -136,7 +138,7 @@ When using `volumes`, an application file can be mounted in the `dropins` direct
 ```console
 $ docker run -d -p 80:9080 -p 443:9443 \
 	    -v /tmp/DefaultServletEngine/dropins/Sample1.war:/config/dropins/Sample1.war \
-	    websphere-liberty:webProfile8
+	    amd64/websphere-liberty:webProfile8
 ```
 
 When the server is started, you can browse to http://localhost/Sample1/SimpleServlet on the Docker host.
@@ -148,7 +150,7 @@ For greater flexibility over configuration, it is possible to mount an entire se
 ```console
 $ docker run -d -p 80:9080 \
       -v /tmp/DefaultServletEngine:/config \
-      websphere-liberty:webProfile8
+      amd64/websphere-liberty:webProfile8
 ```
 
 # Using Spring Boot with WebSphere Liberty
@@ -160,7 +162,7 @@ To elaborate these capabilities this section assumes the standalone Spring Boot 
 1.	A Spring Boot application JAR deploys to the `dropins/spring` directory within the default server configuration, not the `dropins` directory. Liberty allows one Spring Boot application per server configuration. You can create a Spring Boot application layer over this image by adding the application JAR to the `dropins/spring` directory. In this example we copied `hellospringboot.jar` from `/tmp` to the same directory containing the following Dockerfile.
 
 	```dockerfile
-	FROM websphere-liberty:kernel
+	FROM amd64/websphere-liberty:kernel
 
 	COPY --chown=1001:0 hellospringboot.jar /config/dropins/spring/
 	COPY --chown=1001:0 server.xml /config/
@@ -180,14 +182,14 @@ To elaborate these capabilities this section assumes the standalone Spring Boot 
 	You can use the `springBootUtility` command to create thin application and library cache layers over a `full` image. The following example uses docker staging to efficiently build an image that deploys a fat Spring Boot application as two layers containing a thin application and a library cache.
 
 	```dockerfile
-	FROM websphere-liberty:kernel as staging
+	FROM amd64/websphere-liberty:kernel as staging
 	COPY --chown=1001:0 hellospringboot.jar /staging/myFatApp.jar
 	COPY --chown=1001:0 server.xml /config/
 	RUN configure.sh && springBootUtility thin \
 	   --sourceAppPath=/staging/myFatApp.jar \
 	   --targetThinAppPath=/staging/myThinApp.jar \
 	   --targetLibCachePath=/staging/lib.index.cache
-	FROM websphere-liberty:kernel
+	FROM amd64/websphere-liberty:kernel
 	COPY --from=staging /staging/lib.index.cache /lib.index.cache
 	COPY --from=staging /staging/myThinApp.jar /config/dropins/spring/myThinApp.jar
 	```
@@ -213,7 +215,7 @@ Or, create a named data volume container that exposes a volume at the location o
 
 ```console
 docker run -e LICENSE=accept -v /opt/ibm/wlp/output/.classCache \
-    --name classcache websphere-liberty true
+    --name classcache amd64/websphere-liberty true
 ```
 
 Then, run the WebSphere Liberty image with the volumes from the data volume container classcache mounted as follows:
@@ -229,15 +231,15 @@ Liberty writes to two different directories when running: `/opt/ibm/wlp/output` 
 ```console
 docker run -d -p 80:9080 -p 443:9443 \
     --tmpfs /opt/ibm/wlp/output --tmpfs /logs -v /config --read-only \
-    websphere-liberty:javaee8
+    amd64/websphere-liberty:javaee8
 ```
 
 # Changing locale
 
-The base Ubuntu image does not include additional language packs. To use an alternative locale, build your own image that installs the required language pack and then sets the `LANG` environment variable. For example, the following Dockerfile starts with the `websphere-liberty:full` image, installs the Portuguese language pack, and sets Brazilian Portuguese as the default locale:
+The base Ubuntu image does not include additional language packs. To use an alternative locale, build your own image that installs the required language pack and then sets the `LANG` environment variable. For example, the following Dockerfile starts with the `amd64/websphere-liberty:full` image, installs the Portuguese language pack, and sets Brazilian Portuguese as the default locale:
 
 ```dockerfile
-FROM websphere-liberty:full
+FROM amd64/websphere-liberty:full
 RUN apt-get update \
   && apt-get install -y language-pack-pt-base \
   && rm -rf /var/lib/apt/lists/*

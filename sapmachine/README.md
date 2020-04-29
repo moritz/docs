@@ -19,6 +19,8 @@ WARNING:
 -	[`11`, `11.0.7`, `lts`](https://github.com/SAP/SapMachine-infrastructure/blob/3d2d199e3c53a0de726491827ef0587c3c9b4f20/dockerfiles/official/lts/Dockerfile)
 -	[`14`, `14.0.1`, `latest`](https://github.com/SAP/SapMachine-infrastructure/blob/dddf6cf714e932b34e25d69f8cdb9c2381851199/dockerfiles/official/stable/Dockerfile)
 
+[![amd64/sapmachine build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sapmachine.svg?label=amd64/sapmachine%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/sapmachine/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -61,14 +63,14 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 You can pull and test the image with the following commands:
 
 ```console
-docker pull sapmachine:latest
-docker run -it sapmachine:latest java -version
+docker pull amd64/sapmachine:latest
+docker run -it amd64/sapmachine:latest java -version
 ```
 
 You can also use the SapMachine image as a base image to run your own jar file:
 
 ```dockerfile
-FROM sapmachine:latest
+FROM amd64/sapmachine:latest
 RUN mkdir /opt/myapp
 COPY myapp.jar /opt/myapp
 CMD ["java", "-jar", "/opt/myapp/myapp.jar"]
