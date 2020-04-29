@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.0.20200406.0`, `2`, `latest`](https://github.com/amazonlinux/container-images/blob/92466cbdf8600e425701459dba31a31aa53415e7/Dockerfile)
--	[`2.0.20200406.0-with-sources`, `2-with-sources`, `with-sources`](https://github.com/amazonlinux/container-images/blob/d686ee33d867fddd67595fb5d0df581b23ebfdfe/Dockerfile)
--	[`2018.03.0.20200318.1`, `2018.03`, `1`](https://github.com/amazonlinux/container-images/blob/3209338a28f4fa5f0a189e517c0809d095c777d8/Dockerfile)
--	[`2018.03.0.20200318.1-with-sources`, `2018.03-with-sources`, `1-with-sources`](https://github.com/amazonlinux/container-images/blob/4f52cd2aa92456ef8f867fb6fa8ac63aab2d462f/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/amazonlinux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/amazonlinux.svg?label=s390x/amazonlinux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/amazonlinux/)
 
 # Quick reference
 

@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.6.2`](https://github.com/docker-library/logstash/blob/c75adbe14f4280d172e6e049b677215fdb225e0d/7/Dockerfile)
--	[`6.8.8`](https://github.com/docker-library/logstash/blob/591ffb5cdd3e61e87e582b374c9b8d72f8ee1dbe/6/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/logstash build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/logstash.svg?label=s390x/logstash%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/logstash/)
 
 # Quick reference
 
