@@ -23,6 +23,8 @@ WARNING:
 -	[`6.3.0-jdk14`, `6.3-jdk14`, `jdk14`](https://github.com/keeganwitt/docker-gradle/blob/5ccc2041d4dc7caa219e861b961d6c9717b0274b/jdk14/Dockerfile)
 -	[`6.3.0-jre14`, `6.3-jre14`, `jre14`](https://github.com/keeganwitt/docker-gradle/blob/5ccc2041d4dc7caa219e861b961d6c9717b0274b/jre14/Dockerfile)
 
+[![ppc64le/gradle build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/gradle.svg?label=ppc64le/gradle%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/gradle/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -60,7 +62,7 @@ WARNING:
 
 Run this from the directory of the Gradle project you want to build.
 
-`docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle gradle <gradle-task>`
+`docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project ppc64le/gradle gradle <gradle-task>`
 
 Note the above command runs using uid/gid 1000 (user *gradle*) to avoid running as root.
 

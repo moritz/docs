@@ -23,6 +23,8 @@ WARNING:
 -	[`3.0.2-jdk14`, `3.0-jdk14`, `jdk14`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jdk14/Dockerfile)
 -	[`3.0.2-jre14`, `3.0-jre14`, `jre14`](https://github.com/groovy/docker-groovy/blob/a4f34b40e606ef013c6e05ef9db18844befa6a47/jre14/Dockerfile)
 
+[![ppc64le/groovy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/groovy.svg?label=ppc64le/groovy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/groovy/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -64,7 +66,7 @@ Note that if you are mounting a volume and the uid running Docker is not `1000`,
 
 ## Running a Groovy script
 
-`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts groovy groovy <script> <script-args>`
+`docker run --rm -v "$PWD":/home/groovy/scripts -w /home/groovy/scripts ppc64le/groovy groovy <script> <script-args>`
 
 ## Reusing the Grapes cache
 
@@ -72,7 +74,7 @@ The local Grapes cache can be reused across containers by creating a volume and 
 
 ```console
 docker volume create --name grapes-cache
-docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes groovy
+docker run --rm -it -v grapes-cache:/home/groovy/.groovy/grapes ppc64le/groovy
 ```
 
 # License
