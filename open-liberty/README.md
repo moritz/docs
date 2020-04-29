@@ -16,12 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`kernel`, `kernel-java8-openj9`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/latest/kernel/Dockerfile.ubuntu.adoptopenjdk8)
--	[`full`, `full-java8-openj9`, `latest`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/latest/full/Dockerfile.ubuntu.adoptopenjdk8)
--	[`20.0.0.3-kernel-java8-openj9`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/20.0.0.3/kernel/Dockerfile.ubuntu.adoptopenjdk8)
--	[`20.0.0.3-full-java8-openj9`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/20.0.0.3/full/Dockerfile.ubuntu.adoptopenjdk8)
--	[`19.0.0.12-kernel-java8-openj9`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/19.0.0.12/kernel/Dockerfile.ubuntu.adoptopenjdk8)
--	[`19.0.0.12-full-java8-openj9`](https://github.com/OpenLiberty/ci.docker/blob/e71e40aaa6bee15e5bd26f01176ffd249493b6b8/releases/19.0.0.12/full/Dockerfile.ubuntu.adoptopenjdk8)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `i386` ARCHITECTURE
+
+[![i386/open-liberty build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/open-liberty.svg?label=i386/open-liberty%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/open-liberty/)
 
 # Quick reference
 
@@ -102,7 +99,7 @@ There are multiple tags available in this repository.
 The `kernel` image contains just the Liberty kernel and no additional runtime features. This image is the recommended basis for custom built images, so that they can contain only the features required for a specific application. For example, the following Dockerfile starts with this image, copies in the `server.xml` that lists the features required by the application, and then uses the `configure.sh` script to download those features from the online repository.
 
 ```dockerfile
-FROM open-liberty:kernel
+FROM i386/open-liberty:kernel
 COPY --chown=1001:0  Sample1.war /config/dropins/
 COPY --chown=1001:0  server.xml /config/
 RUN configure.sh
@@ -137,7 +134,7 @@ When using `volumes`, an application file can be mounted in the `dropins` direct
 ```console
 $ docker run -d -p 80:9080 -p 443:9443 \
 	    -v /tmp/DefaultServletEngine/dropins/Sample1.war:/config/dropins/Sample1.war \
-	    open-liberty:full
+	    i386/open-liberty:full
 ```
 
 When the server is started, you can browse to http://localhost/Sample1/SimpleServlet on the Docker host.
@@ -149,7 +146,7 @@ For greater flexibility over configuration, it is possible to mount an entire se
 ```console
 $ docker run -d -p 80:9080 \
   -v /tmp/DefaultServletEngine:/config \
-  open-liberty:full
+  i386/open-liberty:full
 ```
 
 # Using Spring Boot with Open Liberty
@@ -161,7 +158,7 @@ To elaborate these capabilities this section assumes the standalone Spring Boot 
 1.	A Spring Boot application JAR deploys to the `dropins/spring` directory within the default server configuration, not the `dropins` directory. Liberty allows one Spring Boot application per server configuration. You can create a Spring Boot application layer over this image by adding the application JAR to the `dropins/spring` directory. In this example we copied `hellospringboot.jar` from `/tmp` to the same directory containing the following Dockerfile.
 
 	```dockerfile
-	FROM open-liberty:kernel
+	FROM i386/open-liberty:kernel
 
 	COPY --chown=1001:0 hellospringboot.jar /config/dropins/spring/
 	COPY --chown=1001:0 server.xml /config/
@@ -181,14 +178,14 @@ To elaborate these capabilities this section assumes the standalone Spring Boot 
 	You can use the `springBootUtility` command to create thin application and library cache layers over a `full` image. The following example uses docker staging to efficiently build an image that deploys a fat Spring Boot application as two layers containing a thin application and a library cache.
 
 	```dockerfile
-	FROM open-liberty:kernel as staging
+	FROM i386/open-liberty:kernel as staging
 	COPY --chown=1001:0 hellospringboot.jar /staging/myFatApp.jar
 	COPY --chown=1001:0 server.xml /config/
 	RUN configure.sh && springBootUtility thin \
 	   --sourceAppPath=/staging/myFatApp.jar \
 	   --targetThinAppPath=/staging/myThinApp.jar \
 	   --targetLibCachePath=/staging/lib.index.cache
-	FROM open-liberty:kernel
+	FROM i386/open-liberty:kernel
 	COPY --from=staging /staging/lib.index.cache /lib.index.cache
 	COPY --from=staging /staging/myThinApp.jar /config/dropins/spring/myThinApp.jar
 	```
@@ -226,7 +223,7 @@ Or, create a named data volume container that exposes a volume at the location o
 
 ```console
 docker run -v /opt/ol/wlp//output/.classCache \
-    --name classcache open-liberty true
+    --name classcache i386/open-liberty true
 ```
 
 Then, run the Open Liberty image with the volumes from the data volume container classcache mounted as follows:
@@ -242,7 +239,7 @@ Liberty writes to two different directories when running: `/opt/ol/wlp//output` 
 ```console
 docker run -d -p 80:9080 -p 443:9443 \
     --tmpfs /opt/ol/wlp//output --tmpfs /logs -v /config --read-only \
-    open-liberty:webProfile8
+    i386/open-liberty:webProfile8
 ```
 
 # Relationship between Open Liberty and WebSphere Liberty

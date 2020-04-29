@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.6.2`](https://github.com/docker-library/elasticsearch/blob/323a9028774ff18e1e3b1d0304bdd55edc88ab80/7/Dockerfile)
--	[`6.8.8`](https://github.com/docker-library/elasticsearch/blob/79420fbf8e7f263bc25b4ff7c592240129ecb180/6/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `i386` ARCHITECTURE
+
+[![i386/elasticsearch build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/elasticsearch.svg?label=i386/elasticsearch%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/elasticsearch/)
 
 # Quick reference
 
